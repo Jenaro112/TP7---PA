@@ -1,0 +1,29 @@
+{
+  "name": "rutasur-event-driven",
+  "version": "1.0.0",
+  "description": "RutaSur - Plataforma logística orientada a eventos con Kafka, MongoDB, Node.js y Next.js",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "services/*",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=shared && npm run build --workspaces --if-present",
+    "test:acceptance": "ts-node scripts/test-acceptance.ts",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "init:topics": "ts-node scripts/init-topics.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@rutasur/shared": "file:./shared",
+    "kafkajs": "^2.2.4",
+    "mongodb": "^6.8.0",
+    "uuid": "^9.0.1"
+  }
+}
